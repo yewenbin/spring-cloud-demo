@@ -37,7 +37,7 @@
 ```java
 package com.segumentfault.spring.cloud.lesson10.api;
 
-import com.segumentfault.spring.cloud.lesson10.domain.User;
+import User;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -89,8 +89,8 @@ public interface UserService {
 package com.segumentfault.spring.cloud.lesson10.user.service.client;
 
 import com.netflix.loadbalancer.IRule;
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.user.service.client.rule.MyRule;
+import UserService;
+import MyRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -162,8 +162,8 @@ public class UserServiceClientApplication {
 package com.segumentfault.spring.cloud.lesson10.user.service.client;
 
 import com.netflix.loadbalancer.IRule;
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.user.service.client.rule.MyRule;
+import UserService;
+import MyRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -243,7 +243,7 @@ user-service-provider.ribbon.listOfServers = \
 
 ## 扩展 IPing 实现
 user-service-provider.ribbon.NFLoadBalancerPingClassName = \
-  com.segumentfault.spring.cloud.lesson10.user.service.client.ping.MyPing
+  MyPing
 
 ## 配置 @FeignClient(name = "${user.service.name}") 中的占位符
 ## user.service.name 实际需要制定 UserService 接口的提供方
@@ -264,8 +264,8 @@ user.service.name = ${provider.service.name}
 ```java
 package com.segumentfault.spring.cloud.lesson10.user.service.provider.service;
 
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.domain.User;
+import UserService;
+import User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -307,8 +307,8 @@ package com.segumentfault.spring.cloud.lesson10.user.service.web.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.domain.User;
+import UserService;
+import User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -394,8 +394,8 @@ public class UserServiceProviderController implements UserService {
 ```java
 package com.segumentfault.spring.cloud.lesson10.user.service.client.web.controller;
 
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.domain.User;
+import UserService;
+import User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -448,8 +448,8 @@ public class UserServiceClientController implements UserService {
 ```java
 package com.segumentfault.spring.cloud.lesson10.fallback;
 
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.domain.User;
+import UserService;
+import User;
 
 import java.util.Collections;
 import java.util.List;
@@ -481,8 +481,8 @@ public class UserServiceFallback implements UserService {
 ```java
 package com.segumentfault.spring.cloud.lesson10.api;
 
-import com.segumentfault.spring.cloud.lesson10.domain.User;
-import com.segumentfault.spring.cloud.lesson10.fallback.UserServiceFallback;
+import User;
+import UserServiceFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -528,8 +528,8 @@ package com.segumentfault.spring.cloud.lesson10.user.service.web.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.domain.User;
+import UserService;
+import User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -734,8 +734,8 @@ eureka.client.serviceUrl.defaultZone = http://${eureka.instance.hostname}:${serv
 package com.segumentfault.spring.cloud.lesson10.user.service.client;
 
 import com.netflix.loadbalancer.IRule;
-import com.segumentfault.spring.cloud.lesson10.api.UserService;
-import com.segumentfault.spring.cloud.lesson10.user.service.client.rule.MyRule;
+import UserService;
+import MyRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -812,7 +812,7 @@ eureka.client.enabled = true
 
 ## 扩展 IPing 实现
 user-service-provider.ribbon.NFLoadBalancerPingClassName = \
-  com.segumentfault.spring.cloud.lesson10.user.service.client.ping.MyPing
+  MyPing
 
 ## 配置 @FeignClient(name = "${user.service.name}") 中的占位符
 ## user.service.name 实际需要制定 UserService 接口的提供方
@@ -1091,7 +1091,7 @@ server.port = 8080
 
 ## 扩展 IPing 实现
 user-service-provider.ribbon.NFLoadBalancerPingClassName = \
-  com.segumentfault.spring.cloud.lesson10.user.service.client.ping.MyPing
+  MyPing
 
 ## 以下内容有 Config Server 提供
 ### 提供方服务名称
@@ -1106,3 +1106,31 @@ user-service-provider.ribbon.NFLoadBalancerPingClassName = \
 #user.service.name = ${provider.service.name}
 ```
 
+### 服务端口信息
+
+> 端口信息
+>
+> ​	zuul-proxy : 6060
+>
+> ​	config-server : 7070
+>
+> ​        user-service-client: 8080
+>
+> ​        user-service-provider : 9090
+>
+> ​        eureka-server : 10000
+
+
+
+### 服务依赖关系
+
+
+
+* eureka-server
+
+  * user-service-provider (1)
+
+  * config-server (2)
+
+    * user-service-client
+      * zuul-proxy

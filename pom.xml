@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.segumentfault</groupId>
-	<artifactId>spring-cloud-lesson-10</artifactId>
+	<groupId>com.wheel</groupId>
+	<artifactId>spring-cloud-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<packaging>pom</packaging>
@@ -16,9 +16,10 @@
 		<module>hystrix-dashboard</module>
 		<module>eureka-server</module>
 		<module>config-server</module>
+		<module>zuul-proxy</module>
 	</modules>
 
-	<name>spring-cloud-lesson-10</name>
+	<name>spring-cloud-demo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
