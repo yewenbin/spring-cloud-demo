@@ -35,7 +35,8 @@ public class MyRule extends AbstractLoadBalancerRule {
             return null;
         }
 
-        int index = random.nextInt(3);
+        int length = servers.size();
+        int index = random.nextInt(3) % length;
         // 永远选择最后一台可达服务器
         Server targetServer = servers.get(index);
         return targetServer;
